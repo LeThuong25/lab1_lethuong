@@ -4,11 +4,11 @@ Thư mục này dùng để nộp minh chứng thiết lập môi trường lab.
 
 ## Sinh viên điền thông tin
 
-- Họ tên:
-- Mã sinh viên:
-- Nhóm:
+- Họ tên: Lê Thị Thương
+- Mã sinh viên: 1771020658
+- Nhóm:4a
 - Vai trò dự kiến trong nhóm:
-- Hệ điều hành:
+- Hệ điều hành: Window 11
 - Ghi chú:
 
 ## Các file minh chứng nên có
@@ -24,12 +24,6 @@ Thư mục này dùng để nộp minh chứng thiết lập môi trường lab.
 - `known-issues.md`
 
 ## Cách sinh file tự động
-
-macOS/Linux:
-
-```bash
-./scripts/collect_session01_evidence.sh
-```
 
 Windows:
 
