@@ -118,18 +118,13 @@ AI Vision Service nhận các dữ liệu đầu vào sau:
 - File ảnh do người dùng tải lên.
 - Đường dẫn ảnh nếu ảnh đã được lưu trên Storage Service.
 - ID người dùng nếu cần lưu lịch sử phân tích.
-- Loại yêu cầu phân tích, ví dụ:
+- Loại yêu cầu phân tích:
   - Nhận diện đối tượng.
   - Mô tả ảnh.
   - Phân loại ảnh.
   - Kiểm tra nội dung ảnh.
-- Metadata của ảnh nếu có:
-  - Tên file.
-  - Kích thước file.
-  - Định dạng ảnh.
-  - Thời gian tải lên.
 
-Ví dụ input JSON:
+### Ví dụ input JSON
 
 ```json
 {
@@ -137,6 +132,9 @@ Ví dụ input JSON:
   "imageUrl": "https://storage.example.com/images/image01.jpg",
   "analysisType": "object_detection"
 }
+```
+
+---
 
 ### Output
 
@@ -173,26 +171,32 @@ Kết quả trả về có thể bao gồm:
     "analysisTime": "1.2s"
   }
 }
+```
+
+---
 
 ## 6. API dự kiến
 
-Method	Endpoint	Mục đích
-GET	/health	Kiểm tra trạng thái hoạt động của service
-POST	/api/vision/analyze	Phân tích ảnh tổng quát
-POST	/api/vision/detect-objects	Nhận diện đối tượng trong ảnh
-POST	/api/vision/classify	Phân loại ảnh
-POST	/api/vision/describe	Tạo mô tả nội dung ảnh
-GET	/api/vision/history/{userId}	Lấy lịch sử phân tích ảnh
-GET	/api/vision/result/{resultId}	Lấy kết quả phân tích theo ID
-DELETE	/api/vision/result/{resultId}	Xóa kết quả phân tích
+| Method | Endpoint | Mục đích |
+|---|---|---|
+| GET | `/health` | Kiểm tra trạng thái hoạt động của service |
+| POST | `/api/vision/analyze` | Phân tích ảnh tổng quát |
+| POST | `/api/vision/detect-objects` | Nhận diện đối tượng trong ảnh |
+| POST | `/api/vision/classify` | Phân loại ảnh |
+| POST | `/api/vision/describe` | Tạo mô tả nội dung ảnh |
+| GET | `/api/vision/history/{userId}` | Lấy lịch sử phân tích ảnh |
+| GET | `/api/vision/result/{resultId}` | Lấy kết quả phân tích theo ID |
+| DELETE | `/api/vision/result/{resultId}` | Xóa kết quả phân tích |
+
+---
 
 ## 7. Phụ thuộc service khác
 
-## Service này gọi đến service nào?
+### Service này gọi đến service nào?
 
 AI Vision Service có thể gọi đến các service sau:
 
-### 1. User Service
+#### 1. User Service
 
 Chức năng:
 
@@ -200,7 +204,7 @@ Chức năng:
 - Kiểm tra quyền truy cập.
 - Xác minh thông tin tài khoản khi gửi yêu cầu phân tích ảnh.
 
-### 2. Storage Service
+#### 2. Storage Service
 
 Chức năng:
 
@@ -208,7 +212,7 @@ Chức năng:
 - Lấy ảnh từ hệ thống lưu trữ để phân tích.
 - Quản lý đường dẫn và dữ liệu ảnh.
 
-### 3. AI Model/API
+#### 3. AI Model/API
 
 Chức năng:
 
@@ -216,7 +220,7 @@ Chức năng:
 - Nhận kết quả phân tích ảnh.
 - Thực hiện nhận diện đối tượng, mô tả ảnh và phân loại ảnh.
 
-### 4. Database Service
+#### 4. Database Service
 
 Chức năng:
 
@@ -224,7 +228,7 @@ Chức năng:
 - Lưu kết quả phân tích.
 - Quản lý dữ liệu phục vụ tra cứu kết quả.
 
-### 5. Logging/Monitoring Service
+#### 5. Logging/Monitoring Service
 
 Chức năng:
 
@@ -234,16 +238,16 @@ Chức năng:
 
 ---
 
-## Service nào gọi đến service này?
+### Service nào gọi đến service này?
 
-### 1. Frontend/Web App
+#### 1. Frontend/Web App
 
 Chức năng:
 
 - Gửi ảnh lên hệ thống để phân tích.
 - Nhận và hiển thị kết quả phân tích cho người dùng.
 
-### 2. Backend chính / API Gateway
+#### 2. Backend chính / API Gateway
 
 Chức năng:
 
@@ -251,7 +255,7 @@ Chức năng:
 - Chuyển tiếp request đến AI Vision Service.
 - Quản lý luồng xử lý giữa các service trong hệ thống.
 
-### 3. Admin Service
+#### 3. Admin Service
 
 Chức năng:
 
@@ -259,12 +263,14 @@ Chức năng:
 - Xem thống kê, log và lịch sử xử lý ảnh.
 - Theo dõi hiệu năng hệ thống.
 
+---
+
 ## 8. Sơ đồ minh họa
 
 ### Sơ đồ kiến trúc service
 
-![Sơ đồ](image.png)
+![Sơ đồ kiến trúc](image.png)
 
 ### Sơ đồ luồng xử lý
 
-![Sơ đồ](Anh1.png)
+![Sơ đồ luồng xử lý](Anh1.png)
